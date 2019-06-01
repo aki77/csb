@@ -1,19 +1,16 @@
-# frozen_string_literal: true
-
 require 'csv'
 
 module Kugiru
   class Builder
-    UTF8_BOM = "\xEF\xBB\xBF"
+    UTF8_BOM = "\xEF\xBB\xBF".freeze
 
-    attr_accessor :cols, :data, :filename
-    attr_reader :output, :utf8_bom
+    attr_reader :output, :utf8_bom, :cols, :data
 
-    def initialize(output = '', utf8_bom: false)
+    def initialize(output = '', cols:, data:, utf8_bom: false)
       @output = output
-      @cols = {}
-      @data = []
       @utf8_bom = utf8_bom
+      @cols = cols
+      @data = data
     end
 
     def build
@@ -26,10 +23,13 @@ module Kugiru
       output
     end
 
-    def build_enumerator
+    def self.build(**args)
+      self.new(args).build
+    end
+
+    def self.build_enumerator(**args)
       Enumerator.new do |y|
-        @output = y
-        build
+        self.new(y, args).build
       end
     end
   end

@@ -9,12 +9,22 @@ module Kugiru
       source ||= template.source
 
       <<~RUBY
-        csv = ::Kugiru::Builder.new(utf8_bom: ::Kugiru.configuration.utf8_bom)
+        csv = OpenStruct.new(
+          utf8_bom: ::Kugiru.configuration.utf8_bom,
+          streaming: ::Kugiru.configuration.streaming,
+          cols: {},
+          data: []
+        )
         #{source}
-        response.headers['Cache-Control'] = 'no-cache'
-        response.headers['X-Accel-Buffering'] = 'no'
         controller.send(:send_file_headers!, type: 'text/csv', filename: csv.filename)
-        csv.build_enumerator
+        _builder_args = csv.to_h.slice(:utf8_bom, :cols, :data)
+        if csv.streaming
+          response.headers['Cache-Control'] = 'no-cache'
+          response.headers['X-Accel-Buffering'] = 'no'
+          ::Kugiru::Builder.build_enumerator(_builder_args)
+        else
+          ::Kugiru::Builder.build(_builder_args)
+        end
       RUBY
     end
   end

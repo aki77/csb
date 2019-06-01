@@ -27,6 +27,7 @@ csv.data = @reports
 # csv.data = @reports.find_each
 
 # csv.filename = "reports_#{Time.current.to_i}.csv"
+# csv.streaming = false
 ```
 
 Output:
@@ -64,6 +65,7 @@ In `config/initializers/kugiru.rb`, you can configure the following values.
 ```ruby
 Kugiru.configure do |config|
   config.utf8_bom = true # default: false
+  config.streaming = false # default: true
 end
 ```
 
