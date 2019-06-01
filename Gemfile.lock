@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kugiru (0.1.0)
+    kugiru (0.1.1)
       csv
       rails (~> 5.2.0)
 

@@ -29,7 +29,12 @@ module Kugiru
 
     def self.build_enumerator(**args)
       Enumerator.new do |y|
-        self.new(y, args).build
+        begin
+          self.new(y, args).build
+        rescue => error
+          Kugiru.configuration.after_streaming_error.try(:call, error)
+          raise error
+        end
       end
     end
   end
