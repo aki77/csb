@@ -11,6 +11,8 @@ module Kugiru
       <<~RUBY
         csv = ::Kugiru::Builder.new(utf8_bom: ::Kugiru.configuration.utf8_bom)
         #{source}
+        response.headers['Cache-Control'] = 'no-cache'
+        response.headers['X-Accel-Buffering'] = 'no'
         controller.send(:send_file_headers!, type: 'text/csv', filename: csv.filename)
         csv.build_enumerator
       RUBY
