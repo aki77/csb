@@ -17,13 +17,11 @@ module Csb
         )
         #{source}
         controller.send(:send_file_headers!, type: 'text/csv', filename: csv.filename)
-        if csv.streaming
+        if csv.streaming?
           response.headers['Cache-Control'] = 'no-cache'
           response.headers['X-Accel-Buffering'] = 'no'
-          csv.build_enumerator
-        else
-          csv.build_string
         end
+        csv.build
       RUBY
     end
   end

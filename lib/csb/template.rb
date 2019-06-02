@@ -10,6 +10,16 @@ module Csb
       @items = []
     end
 
+    def build
+      streaming ? build_enumerator : build_string
+    end
+
+    def streaming?
+      !!streaming
+    end
+
+    private
+
     def build_string
       builder = Builder.new(utf8_bom: utf8_bom, items: items)
       builder.cols.copy!(cols)
@@ -23,7 +33,9 @@ module Csb
           builder.cols.copy!(cols)
           builder.build
         rescue => error
-          Csb.configuration.after_streaming_error.try(:call, error)
+          if Csb.configuration.after_streaming_error.respond_to?(:call)
+            Csb.configuration.after_streaming_error.call(error)
+          end
           raise error
         end
       end
