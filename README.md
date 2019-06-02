@@ -4,6 +4,8 @@ A simple and streaming support CSV template engine for Ruby on Rails.
 
 ## Usage
 
+### Template handler
+
 In app/controllers/reports_controller.rb:
 
 ```ruby
@@ -35,6 +37,23 @@ Output:
 Update date,Categories,Content,Empty,Static
 2019/06/01,category1 category2,content1,,dummy
 2019/06/02,category3,content2,,dummy
+```
+
+### Directly
+
+```ruby
+csv = Csb::Builder.new(items: items)
+csv.cols.add('Update date') { |r| l(r.updated_at.to_date) }
+csv.cols.add('Categories') { |r| r.categories.pluck(:name).join(' ') }
+csv.cols.add('Content', :content)
+csv.cols.add('Empty')
+csv.cols.add('Static', 'dummy')
+csv.build
+
+# =>
+# Update date,Categories,Content,Empty,Static
+# 2019/06/01,category1 category2,content1,,dummy
+# 2019/06/02,category3,content2,,dummy
 ```
 
 ## Installation
