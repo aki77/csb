@@ -1,6 +1,6 @@
 require 'csv'
 
-module Kugiru
+module Csb
   class Builder
     UTF8_BOM = "\xEF\xBB\xBF".freeze
 
@@ -32,7 +32,7 @@ module Kugiru
         begin
           self.new(y, args).build
         rescue => error
-          Kugiru.configuration.after_streaming_error.try(:call, error)
+          Csb.configuration.after_streaming_error.try(:call, error)
           raise error
         end
       end

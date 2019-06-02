@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Kugiru
+module Csb
   class Handler
     class_attribute :default_format
     self.default_format = :csv
@@ -10,8 +10,8 @@ module Kugiru
 
       <<~RUBY
         csv = OpenStruct.new(
-          utf8_bom: ::Kugiru.configuration.utf8_bom,
-          streaming: ::Kugiru.configuration.streaming,
+          utf8_bom: ::Csb.configuration.utf8_bom,
+          streaming: ::Csb.configuration.streaming,
           cols: {},
           data: []
         )
@@ -21,9 +21,9 @@ module Kugiru
         if csv.streaming
           response.headers['Cache-Control'] = 'no-cache'
           response.headers['X-Accel-Buffering'] = 'no'
-          ::Kugiru::Builder.build_enumerator(_builder_args)
+          ::Csb::Builder.build_enumerator(_builder_args)
         else
-          ::Kugiru::Builder.build(_builder_args)
+          ::Csb::Builder.build(_builder_args)
         end
       RUBY
     end

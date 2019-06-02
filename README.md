@@ -1,4 +1,4 @@
-# Kugiru
+# Csb
 
 A simple and streaming support CSV template engine for Ruby on Rails.
 
@@ -43,7 +43,7 @@ Update date,Categories,Content,Url
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'kugiru'
+gem 'csb'
 ```
 
 And then execute:
@@ -55,15 +55,15 @@ $ bundle
 Or install it yourself as:
 
 ```bash
-$ gem install kugiru
+$ gem install csb
 ```
 
 ## Configuration
 
-In `config/initializers/kugiru.rb`, you can configure the following values.
+In `config/initializers/csb.rb`, you can configure the following values.
 
 ```ruby
-Kugiru.configure do |config|
+Csb.configure do |config|
   config.utf8_bom = true # default: false
   config.streaming = false # default: true
   config.after_streaming_error = ->(error) do # default: nil
@@ -75,7 +75,7 @@ end
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/aki77/kugiru. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/aki77/csb. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -83,4 +83,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Kugiru project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/aki77/kugiru/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Csb project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/aki77/csb/blob/master/CODE_OF_CONDUCT.md).

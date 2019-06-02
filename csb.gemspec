@@ -1,16 +1,16 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "kugiru/version"
+require "csb/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "kugiru"
-  spec.version       = Kugiru::VERSION
+  spec.name          = "csb"
+  spec.version       = Csb::VERSION
   spec.authors       = ["aki77"]
   spec.email         = ["aki77@users.noreply.github.com"]
 
   spec.summary       = %q{A simple and streaming support CSV template engine for Ruby on Rails.}
   spec.description   = %q{A simple and streaming support CSV template engine for Ruby on Rails.}
-  spec.homepage      = "https://github.com/aki77/kugiru"
+  spec.homepage      = "https://github.com/aki77/csb"
   spec.license       = "MIT"
 
   # Specify which files should be added to the gem when it is released.

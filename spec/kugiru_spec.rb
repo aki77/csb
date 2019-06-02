@@ -1,5 +1,5 @@
-RSpec.describe Kugiru do
+RSpec.describe Csb do
   it "has a version number" do
-    expect(Kugiru::VERSION).not_to be nil
+    expect(Csb::VERSION).not_to be nil
   end
 end

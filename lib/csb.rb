@@ -1,9 +1,9 @@
-require 'kugiru/version'
-require 'kugiru/railtie'
-require 'kugiru/configuration'
-require 'kugiru/builder'
+require 'csb/version'
+require 'csb/railtie'
+require 'csb/configuration'
+require 'csb/builder'
 
-module Kugiru
+module Csb
   class << self
     def configure
       yield(configuration)

@@ -1,4 +1,4 @@
-module Kugiru
+module Csb
   class Configuration
     attr_accessor :utf8_bom, :streaming, :after_streaming_error
 
