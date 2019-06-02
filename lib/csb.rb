@@ -2,6 +2,7 @@ require 'csb/version'
 require 'csb/railtie'
 require 'csb/configuration'
 require 'csb/builder'
+require 'csb/cols'
 
 module Csb
   class << self

@@ -12,30 +12,29 @@ def index
 end
 ```
 
-In app/views/reports/index.csv.cb:
+In app/views/reports/index.csv.csb:
 
 ```ruby
-csv.cols = {
-  'Update date' => ->(r) { l(r.updated_at.to_date) },
-  'Categories' => ->(r) { r.categories.pluck(:name).join(' ') },
-  'Content' => ->(r) { r.content },
-  'Url' => ->(r) { report_url(r) },
-}
-csv.data = @reports
-
+csv.items = @reports
 # When there are many records
-# csv.data = @reports.find_each
+# csv.items = @reports.find_each
 
 # csv.filename = "reports_#{Time.current.to_i}.csv"
 # csv.streaming = false
+
+csv.cols.add('Update date') { |r| l(r.updated_at.to_date) }
+csv.cols.add('Categories') { |r| r.categories.pluck(:name).join(' ') }
+csv.cols.add('Content', :content)
+csv.cols.add('Empty')
+csv.cols.add('Static', 'dummy')
 ```
 
 Output:
 
 ```csv
-Update date,Categories,Content,Url
-2019/06/01,category1 category2,content1,https://localhost/reports/1
-2019/06/02,category3,content2,https://localhost/reports/2
+Update date,Categories,Content,Empty,Static
+2019/06/01,category1 category2,content1,,dummy
+2019/06/02,category3,content2,,dummy
 ```
 
 ## Installation
