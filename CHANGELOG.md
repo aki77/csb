@@ -1,3 +1,7 @@
+## 0.2.1
+
+- Update dependency
+
 ## 0.2.0
 
 - Rename
