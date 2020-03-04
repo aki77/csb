@@ -7,12 +7,12 @@ module Csb
       @value = block ? block : value
     end
 
-    def value_by_item(item)
+    def value_by_item(item, *args)
       case value
       when ::Symbol
         item.public_send(value)
       when ::Proc
-        value.call(item)
+        value.call(item, *args)
       else
         value
       end

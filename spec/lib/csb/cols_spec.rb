@@ -16,10 +16,21 @@ RSpec.describe Csb::Cols do
   end
 
   describe '#values_by_item' do
-    subject { cols.values_by_item(item) }
+    subject { cols.values_by_item(item, *args) }
 
     let(:item) { OpenStruct.new(name: 'tester', email: 'dummy@dummy.test') }
+    let(:args) { [] }
 
     it { is_expected.to eq ['tester', 'dummy@dummy.test', nil] }
+
+    context 'with args' do
+      let(:args) { [77] }
+
+      before do
+        cols.add('Count') { |item, count| count }
+      end
+
+      it { is_expected.to eq ['tester', 'dummy@dummy.test', nil, 77] }
+    end
   end
 end

@@ -27,9 +27,9 @@ module Csb
       map(&:name)
     end
 
-    def values_by_item(item)
+    def values_by_item(item, *args)
       map do |col|
-        col.value_by_item(item)
+        col.value_by_item(item, *args)
       end
     end
   end

@@ -23,6 +23,23 @@ RSpec.describe Csb::Builder do
       it { is_expected.to eq "Name,Email,Dummy\ntester1,dummy1@dummy.test,\ntester2,dummy2@dummy.test,\n" }
     end
 
+    context 'Nested array items' do
+      let(:builder) { Csb::Builder.new(items: items) }
+
+      let(:items) do
+        [
+          [OpenStruct.new(name: 'tester1', email: 'dummy1@dummy.test'), 5],
+          [OpenStruct.new(name: 'tester2', email: 'dummy2@dummy.test'), 10],
+        ]
+      end
+
+      before do
+        builder.cols.add('Count') { |item, count| count }
+      end
+
+      it { is_expected.to eq "Name,Email,Dummy,Count\ntester1,dummy1@dummy.test,,5\ntester2,dummy2@dummy.test,,10\n" }
+    end
+
     context 'with utf8 bom' do
       let(:builder) { Csb::Builder.new(items: items, utf8_bom: true) }
 

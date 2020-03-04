@@ -19,7 +19,8 @@ module Csb
       output << UTF8_BOM if utf8_bom
       output << CSV.generate_line(cols.headers)
       items.each do |item|
-        output << CSV.generate_line(cols.values_by_item(item))
+        args = Array(item)
+        output << CSV.generate_line(cols.values_by_item(*args))
       end
       output
     end
