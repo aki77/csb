@@ -20,6 +20,8 @@ module Csb
         if csv.streaming?
           response.headers['Cache-Control'] = 'no-cache'
           response.headers['X-Accel-Buffering'] = 'no'
+          # SEE: https://github.com/rack/rack/issues/1619
+          response.headers['Last-Modified'] = '0'
         end
         csv.build
       RUBY
