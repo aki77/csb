@@ -21,7 +21,9 @@ module Csb
           response.headers['Cache-Control'] = 'no-cache'
           response.headers['X-Accel-Buffering'] = 'no'
           # SEE: https://github.com/rack/rack/issues/1619
-          response.headers['Last-Modified'] = '0'
+          if Gem::Version.new('2.2.0') <= Gem::Version.new(Rack::RELEASE)
+            response.headers['Last-Modified'] = '0'
+          end
         end
         csv.build
       RUBY
