@@ -1,3 +1,7 @@
+## 0.2.3
+
+- Fix rack@2.2.x bug https://github.com/rack/rack/issues/1619
+
 ## 0.2.2
 
 - Update dependency
