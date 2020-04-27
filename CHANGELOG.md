@@ -1,3 +1,7 @@
+## 0.2.4
+
+- Clean up rack@2.2.x monkey patch.
+
 ## 0.2.3
 
 - Fix rack@2.2.x bug https://github.com/rack/rack/issues/1619
