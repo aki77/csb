@@ -1,3 +1,6 @@
+[![Gem Version](https://badge.fury.io/rb/csb.svg)](https://rubygems.org/gems/csb)
+[![Build](https://github.com/aki77/csb/workflows/Build/badge.svg)](https://github.com/aki77/csb/actions)
+
 # Csb
 
 A simple and streaming support CSV template engine for Ruby on Rails.
