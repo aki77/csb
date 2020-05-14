@@ -20,6 +20,10 @@ module Csb
       output << CSV.generate_line(cols.headers)
       items.each do |item|
         output << CSV.generate_line(cols.values_by_item(item))
+      rescue => error
+        break if Csb.configuration.ignore_class_names.include?(error.class.name)
+
+        raise error
       end
       output
     end

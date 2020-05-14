@@ -1,3 +1,7 @@
+## 0.3.0
+
+- Add ignore_class_names config
+
 ## 0.2.4
 
 - Clean up rack@2.2.x monkey patch.
