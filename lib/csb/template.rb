@@ -1,5 +1,5 @@
 module Csb
-  class Template < Builder
+  class Template
     attr_accessor :utf8_bom, :filename, :streaming, :items
     attr_reader :cols
 
