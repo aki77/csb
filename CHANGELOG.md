@@ -1,3 +1,7 @@
+## 0.3.1
+
+- Refactor
+
 ## 0.3.0
 
 - Add ignore_class_names config
