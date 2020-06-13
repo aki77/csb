@@ -1,7 +1,6 @@
 module Csb
   class Template
-    attr_accessor :utf8_bom, :filename, :streaming, :items
-    attr_reader :cols
+    attr_accessor :utf8_bom, :filename, :streaming, :items, :cols
 
     def initialize(utf8_bom:, streaming:)
       @utf8_bom = utf8_bom
