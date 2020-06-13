@@ -59,6 +59,32 @@ csv.build
 # 2019/06/02,category3,content2,,dummy
 ```
 
+### Testing
+
+```ruby
+# Your view
+csv.items = @articles
+csv.cols = Article.csb_cols
+
+# Your Model
+def self.csb_cols
+  Csb.cols.new do |cols|
+    cols.add('Update date') { |r| I18n.l(r.updated_at.to_date) }
+    cols.add('Categories') { |r| r.categories.pluck(:name).join(' ') }
+    cols.add('Title', :title)
+  end
+end
+
+# Your test
+require 'csb/testing'
+
+expect(Article.csb_cols.col_pairs(article)).to eq [
+  ['Update date', '2020-01-01'],
+  ['Categories', 'test rspec'],
+  ['Title', 'Testing'],
+]
+```
+
 ## Installation
 
 Add this line to your application's Gemfile:

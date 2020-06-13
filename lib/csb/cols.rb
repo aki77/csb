@@ -9,6 +9,7 @@ module Csb
 
     def initialize
       @cols = []
+      yield(self) if block_given?
     end
 
     def copy!(other)
@@ -32,5 +33,6 @@ module Csb
         col.value_by_item(item)
       end
     end
+    alias_method :values, :values_by_item
   end
 end

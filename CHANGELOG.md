@@ -1,3 +1,8 @@
+## 0.4.0
+
+- Csb::Cols#initialize supports block arguments
+- Add Testing Helper
+
 ## 0.3.1
 
 - Refactor
