@@ -68,7 +68,7 @@ csv.cols = Article.csb_cols
 
 # Your Model
 def self.csb_cols
-  Csb.cols.new do |cols|
+  Csb::Cols.new do |cols|
     cols.add('Update date') { |r| I18n.l(r.updated_at.to_date) }
     cols.add('Categories') { |r| r.categories.pluck(:name).join(' ') }
     cols.add('Title', :title)
