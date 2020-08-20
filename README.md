@@ -21,8 +21,12 @@ In app/views/reports/index.csv.csb:
 
 ```ruby
 csv.items = @reports
+
 # When there are many records
 # csv.items = @reports.find_each
+
+# When there are many records with decorator
+# csv.items = @reports.find_each.lazy.map(&:decorate)
 
 # csv.filename = "reports_#{Time.current.to_i}.csv"
 # csv.streaming = false
