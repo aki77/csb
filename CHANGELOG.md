@@ -1,3 +1,7 @@
+## 0.5.0
+
+- Add `as_table` testing helper
+
 ## 0.4.0
 
 - Csb::Cols#initialize supports block arguments
