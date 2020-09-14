@@ -5,6 +5,13 @@
 
 A simple and streaming support CSV template engine for Ruby on Rails.
 
+## Features
+
+- Support for streaming downloads
+- Output in UTF-8 with BOM
+- Readable code
+- High testability
+
 ## Usage
 
 ### Template handler
@@ -86,6 +93,12 @@ expect(Article.csb_cols.col_pairs(article)).to eq [
   ['Update date', '2020-01-01'],
   ['Categories', 'test rspec'],
   ['Title', 'Testing'],
+]
+
+expect(Article.csb_cols.as_table(articles)).to eq [
+  ['Update date', 'Categories', 'Title'],
+  ['2020-01-01', 'test rspec', 'Testing'],
+  ['2020-02-01', 'rails gem', 'Rails 6.2'],
 ]
 ```
 
