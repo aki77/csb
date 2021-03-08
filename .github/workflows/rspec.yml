@@ -18,7 +18,7 @@ jobs:
         ruby: [2.6, 2.7]
         gemfile: [
           "gemfiles/rails52.gemfile",
-          "gemfiles/rails60.gemfile",
+          "gemfiles/rails61.gemfile",
         ]
     steps:
     - name: Install packages
