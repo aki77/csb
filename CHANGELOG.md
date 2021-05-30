@@ -1,3 +1,7 @@
+## 0.5.1
+
+- Update dependency
+
 ## 0.5.0
 
 - Add `as_table` testing helper
