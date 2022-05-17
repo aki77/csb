@@ -1,3 +1,8 @@
+## 0.6.0
+
+- Drop support for ruby 2.6
+- Drop support for rails 5.1
+
 ## 0.5.1
 
 - Update dependency
