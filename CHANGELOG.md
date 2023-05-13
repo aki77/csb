@@ -1,3 +1,8 @@
+## 0.7.0
+
+- Drop support for ruby 2.7
+- Drop support for rails 6.0
+
 ## 0.6.0
 
 - Drop support for ruby 2.6
