@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'csb/template'
+require 'csb/errors'
 
 module Csb
   class Handler
@@ -18,14 +19,16 @@ module Csb
         #{source}
         controller.send(:send_file_headers!, type: 'text/csv', filename: csv.filename)
         if csv.streaming?
-          response.headers['Cache-Control'] = 'no-cache'
-          response.headers['X-Accel-Buffering'] = 'no'
-          # SEE: https://github.com/rack/rack/issues/1619
-          if Gem::Version.new('2.2.0') <= Gem::Version.new(Rack::RELEASE)
-            response.headers['Last-Modified'] = '0'
+          unless controller.respond_to?(:send_stream)
+            raise ::Csb::ActionControllerLiveNotIncludedError.new(controller)
           end
+
+          controller.send_stream(filename: csv.filename, type: 'text/csv') do |stream|
+            csv.build.each { |row| stream.write(row) }
+          end
+        else
+          csv.build
         end
-        csv.build
       RUBY
     end
   end

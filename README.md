@@ -36,6 +36,8 @@ csv.items = @reports
 # csv.items = @reports.find_each.lazy.map(&:decorate)
 
 # csv.filename = "reports_#{Time.current.to_i}.csv"
+
+# To enable streaming, you need to include ActionController::Live in the corresponding controller.
 # csv.streaming = false
 
 csv.cols.add('Update date') { |r| l(r.updated_at.to_date) }
@@ -129,6 +131,7 @@ In `config/initializers/csb.rb`, you can configure the following values.
 ```ruby
 Csb.configure do |config|
   config.utf8_bom = true # default: false
+  # To enable streaming, you need to include ActionController::Live in the corresponding controller.
   config.streaming = false # default: true
   config.after_streaming_error = ->(error) do # default: nil
     Rails.logger.error(error)
