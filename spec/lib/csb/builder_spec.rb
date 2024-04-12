@@ -28,5 +28,11 @@ RSpec.describe Csb::Builder do
 
       it { is_expected.to eq "\xEF\xBB\xBFName,Email,Dummy\ntester1,dummy1@dummy.test,\ntester2,dummy2@dummy.test,\n" }
     end
+
+    context 'with csv_options' do
+      let(:builder) { Csb::Builder.new(items: items, csv_options: { col_sep: "\t" }) }
+
+      it { is_expected.to eq "Name\tEmail\tDummy\ntester1\tdummy1@dummy.test\t\ntester2\tdummy2@dummy.test\t\n" }
+    end
   end
 end

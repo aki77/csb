@@ -33,5 +33,17 @@ RSpec.describe Csb::Template do
 
       it { is_expected.to eq "Name,Email,Dummy\ntester1,dummy1@dummy.test,\ntester2,dummy2@dummy.test,\n" }
     end
+
+    context 'with csv_options' do
+      subject { template.build }
+
+      let(:template) { Csb::Template.new(streaming: false, utf8_bom: false) }
+
+      before do
+        template.csv_options = { row_sep: "\r\n" }
+      end
+
+      it { is_expected.to eq "Name,Email,Dummy\r\ntester1,dummy1@dummy.test,\r\ntester2,dummy2@dummy.test,\r\n" }
+    end
   end
 end
