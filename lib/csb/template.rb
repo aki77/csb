@@ -2,12 +2,12 @@ module Csb
   class Template
     attr_accessor :utf8_bom, :filename, :streaming, :items, :cols, :csv_options
 
-    def initialize(utf8_bom:, streaming:)
+    def initialize(utf8_bom:, streaming:, csv_options:)
       @utf8_bom = utf8_bom
       @streaming = streaming
+      @csv_options = csv_options
       @cols = Cols.new
       @items = []
-      @csv_options = {}
     end
 
     def build
