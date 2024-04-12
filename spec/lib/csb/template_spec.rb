@@ -16,7 +16,7 @@ RSpec.describe Csb::Template do
     context 'Streaming' do
       subject(:enum) { template.build }
 
-      let(:template) { Csb::Template.new(streaming: true, utf8_bom: false) }
+      let(:template) { Csb::Template.new(streaming: true, utf8_bom: false, csv_options: {}) }
 
       it 'Is a Enumerator' do
         expect(enum).to be_a Enumerator
@@ -29,7 +29,7 @@ RSpec.describe Csb::Template do
     context 'Not streaming' do
       subject { template.build }
 
-      let(:template) { Csb::Template.new(streaming: false, utf8_bom: false) }
+      let(:template) { Csb::Template.new(streaming: false, utf8_bom: false, csv_options: {}) }
 
       it { is_expected.to eq "Name,Email,Dummy\ntester1,dummy1@dummy.test,\ntester2,dummy2@dummy.test,\n" }
     end
@@ -37,11 +37,7 @@ RSpec.describe Csb::Template do
     context 'with csv_options' do
       subject { template.build }
 
-      let(:template) { Csb::Template.new(streaming: false, utf8_bom: false) }
-
-      before do
-        template.csv_options = { row_sep: "\r\n" }
-      end
+      let(:template) { Csb::Template.new(streaming: false, utf8_bom: false, csv_options: { row_sep: "\r\n" }) }
 
       it { is_expected.to eq "Name,Email,Dummy\r\ntester1,dummy1@dummy.test,\r\ntester2,dummy2@dummy.test,\r\n" }
     end
