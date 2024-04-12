@@ -37,6 +37,7 @@ csv.items = @reports
 
 # csv.filename = "reports_#{Time.current.to_i}.csv"
 # csv.streaming = false
+# csv.csv_options = { col_sep: "\t" }
 
 csv.cols.add('Update date') { |r| l(r.updated_at.to_date) }
 csv.cols.add('Categories') { |r| r.categories.pluck(:name).join(' ') }
@@ -130,6 +131,7 @@ In `config/initializers/csb.rb`, you can configure the following values.
 Csb.configure do |config|
   config.utf8_bom = true # default: false
   config.streaming = false # default: true
+  config.csv_options = { col_sep: "\t" } # default: {}
   config.after_streaming_error = ->(error) do # default: nil
     Rails.logger.error(error)
     Bugsnag.notify(error)

@@ -1,3 +1,7 @@
+## 0.8.0
+
+- Add `csv_options` as an option to pass to `CSV.generate_line` (#18)
+
 ## 0.7.0
 
 - Drop support for ruby 2.7

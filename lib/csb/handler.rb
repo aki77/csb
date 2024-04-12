@@ -14,6 +14,7 @@ module Csb
         csv = ::Csb::Template.new(
           utf8_bom: ::Csb.configuration.utf8_bom,
           streaming: ::Csb.configuration.streaming,
+          csv_options: ::Csb.configuration.csv_options,
         )
         #{source}
         controller.send(:send_file_headers!, type: 'text/csv', filename: csv.filename)
