@@ -1,3 +1,7 @@
+## 0.9.0
+
+- Fixing Issue with config.streaming Enabled in Rails 7.1 (#17)
+
 ## 0.8.0
 
 - Add `csv_options` as an option to pass to `CSV.generate_line` (https://github.com/aki77/csb/pull/18)
