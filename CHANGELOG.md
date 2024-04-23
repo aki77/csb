@@ -1,3 +1,7 @@
+## 0.10.0
+
+- Drop support for rails 6.1
+
 ## 0.9.0
 
 - Fixing Issue with config.streaming Enabled in Rails 7.1 (https://github.com/aki77/csb/pull/17)
