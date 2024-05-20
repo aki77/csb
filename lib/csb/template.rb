@@ -2,10 +2,8 @@ module Csb
   class Template
     attr_accessor :utf8_bom, :filename, :streaming, :items, :cols, :csv_options
 
-    def initialize(utf8_bom:, streaming:, csv_options:)
-      @utf8_bom = utf8_bom
+    def initialize(streaming:)
       @streaming = streaming
-      @csv_options = csv_options
       @cols = Cols.new
       @items = []
     end
@@ -20,8 +18,16 @@ module Csb
 
     private
 
+    def builder_options
+      {
+        items: items,
+        utf8_bom: utf8_bom,
+        csv_options: csv_options,
+      }.compact
+    end
+
     def build_string
-      builder = Builder.new(utf8_bom: utf8_bom, items: items, csv_options: csv_options)
+      builder = Builder.new(**builder_options)
       builder.cols.copy!(cols)
       builder.build
     end
@@ -29,7 +35,7 @@ module Csb
     def build_enumerator
       Enumerator.new do |y|
         begin
-          builder = Builder.new(y, utf8_bom: utf8_bom, items: items, csv_options: csv_options)
+          builder = Builder.new(y, **builder_options)
           builder.cols.copy!(cols)
           builder.build
         rescue => error
