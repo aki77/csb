@@ -1,3 +1,7 @@
+## 0.11.0
+
+- Consider `Csb.configuration` as initial value for `Csb::Builder`
+
 ## 0.10.0
 
 - Drop support for rails 6.1

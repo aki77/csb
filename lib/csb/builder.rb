@@ -8,12 +8,12 @@ module Csb
     attr_reader :output, :utf8_bom, :items, :cols, :csv_options
     attr_accessor :items
 
-    def initialize(output = '', items: [], utf8_bom: false, csv_options: {})
+    def initialize(output = '', items: [], **kwargs)
       @output = output
-      @utf8_bom = utf8_bom
       @cols = Cols.new
       @items = items
-      @csv_options = csv_options
+      @utf8_bom = kwargs.fetch(:utf8_bom) { Csb.configuration.utf8_bom }
+      @csv_options = kwargs.fetch(:csv_options) { Csb.configuration.csv_options }
     end
 
     def build
