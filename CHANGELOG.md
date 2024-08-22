@@ -1,3 +1,8 @@
+## 0.12.0
+
+- Drop support for Rails versions below 7.1.4
+- Drop support for ruby 3.0
+
 ## 0.11.0
 
 - Consider `Csb.configuration` as initial value for `Csb::Builder`
