@@ -34,5 +34,11 @@ RSpec.describe Csb::Builder do
 
       it { is_expected.to eq "Name\tEmail\tDummy\ntester1\tdummy1@dummy.test\t\ntester2\tdummy2@dummy.test\t\n" }
     end
+
+    context 'without headers' do
+      let(:builder) { Csb::Builder.new(items: items, csv_options: { write_headers: false }) }
+
+      it { is_expected.to eq "tester1,dummy1@dummy.test,\ntester2,dummy2@dummy.test,\n" }
+    end
   end
 end
