@@ -45,5 +45,17 @@ RSpec.describe Csb::Template do
 
       it { is_expected.to eq "Name,Email,Dummy\r\ntester1,dummy1@dummy.test,\r\ntester2,dummy2@dummy.test,\r\n" }
     end
+
+    context 'without headers' do
+      subject { template.build }
+
+      let(:template) do
+        template = Csb::Template.new(streaming: false)
+        template.csv_options = { write_headers: false }
+        template
+      end
+
+      it { is_expected.to eq "tester1,dummy1@dummy.test,\ntester2,dummy2@dummy.test,\n" }
+    end
   end
 end

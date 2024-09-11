@@ -18,7 +18,7 @@ module Csb
 
     def build
       output << UTF8_BOM if utf8_bom
-      output << CSV.generate_line(cols.headers, **csv_options)
+      output << CSV.generate_line(cols.headers, **csv_options) if write_headers?
       items.each do |item|
         output << CSV.generate_line(cols.values_by_item(item), **csv_options)
       rescue => error
@@ -27,6 +27,12 @@ module Csb
         raise error
       end
       output
+    end
+
+    private
+
+    def write_headers?
+      @csv_options.fetch(:write_headers, true)
     end
   end
 end
