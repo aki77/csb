@@ -12,6 +12,7 @@ jobs:
       BUNDLE_JOBS: 4
       BUNDLE_RETRY: 3
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
+      RUBYOPT: -EUTF-8 -W:deprecated
     strategy:
       fail-fast: false
       matrix:
