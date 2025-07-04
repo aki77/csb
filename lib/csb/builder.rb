@@ -8,7 +8,7 @@ module Csb
     attr_reader :output, :utf8_bom, :items, :cols, :csv_options
     attr_accessor :items
 
-    def initialize(output = '', items: [], **kwargs)
+    def initialize(output = +'', items: [], **kwargs)
       @output = output
       @cols = Cols.new
       @items = items
