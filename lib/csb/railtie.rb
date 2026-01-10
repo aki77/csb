@@ -1,4 +1,4 @@
-require 'rails/railtie'
+require 'rails'
 
 module Csb
   class Railtie < Rails::Railtie
