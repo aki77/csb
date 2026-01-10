@@ -1,3 +1,7 @@
+# Changelog
+
+For changelogs from version 0.13.0 onwards, please see the [GitHub Releases page](https://github.com/aki77/csb/releases).
+
 ## 0.12.0
 
 - Drop support for Rails versions below 7.1.4
