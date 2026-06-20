@@ -12,3 +12,6 @@
 Gemfile.lock
 /vendor/bundle
 .vscode/settings.json
+
+# Local-only Japanese skill drafts (not distributed)
+skills/**/*-ja.md
