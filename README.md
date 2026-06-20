@@ -133,8 +133,6 @@ expect(Article.csb_cols.as_table(articles)).to eq [
 
 ## Installation
 
-Requires Ruby >= 3.1 and Rails >= 7.1.4.
-
 Add this line to your application's Gemfile:
 
 ```ruby
