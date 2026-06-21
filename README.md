@@ -174,6 +174,18 @@ Csb.configure do |config|
 end
 ```
 
+## Agent skill
+
+This gem ships an [agent skill](skills/csb/) (`SKILL.md`) so AI coding agents (e.g. Claude Code) understand how to use csb. Install it into your project with [apm (Agent Package Manager)](https://github.com/microsoft/apm):
+
+```sh
+apm install aki77/csb/skills/csb
+```
+
+apm deploys the skill to each agent's directory (e.g. `.claude/skills/`) and locks the version in its lockfile.
+
+Alternatively, if your project already pulls csb in via Bundler, the [bundler-skills](https://github.com/aki77/bundler-skills) plugin auto-syncs this skill on `bundle install` — keeping the skill version locked to the gem version.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/aki77/csb. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
